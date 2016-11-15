@@ -1,0 +1,35 @@
+FUNCTION "XSA_Training.db.functions::TBF_GET_ALL_NODES" (ip_nodename NVARCHAR(20))
+	RETURNS table("node_name" NVARCHAR(20))
+	LANGUAGE SQLSCRIPT 
+	SQL SECURITY INVOKER AS 
+BEGIN 
+/*****************************  
+	Write your function logic 
+ *****************************/ 
+ 
+	DECLARE CNT INTEGER;
+	
+	TMP = SELECT "node_name", "subnode_name" FROM "XSA_Training.db::MyModel.node"
+			WHERE "node_name" = :ip_nodename;
+			
+	SELECT COUNT(*) INTO CNT FROM :TMP;
+	IF CNT = 0 THEN
+		RETURN SELECT :ip_nodename AS "node_name" FROM "XSA_Training.db.data::DUMMY";
+	END IF;
+	SELECT COUNT(*) INTO CNT FROM :TMP WHERE "subnode_name" IS NOT NULL;
+	
+	RESULTSET = SELECT "node_name" FROM  :TMP
+					UNION SELECT "subnode_name" as "node_name" FROM  :TMP;
+	WHILE CNT != 0 DO
+		--TRAVERSE SUB NODES
+		TMP = SELECT B."node_name", B."subnode_name" FROM :TMP A
+				LEFT OUTER JOIN "XSA_Training.db::MyModel.node" B
+				ON A."subnode_name" = B."node_name";
+		--APPEND RESULT SET
+		RESULTSET = SELECT "node_name" FROM :RESULTSET
+						UNION SELECT "subnode_name" FROM  :TMP WHERE "subnode_name" IS NOT NULL;
+		SELECT COUNT(*) INTO CNT FROM :TMP WHERE "subnode_name" IS NOT NULL;				
+	END WHILE;
+	
+	RETURN SELECT "node_name" FROM :RESULTSET;
+END;

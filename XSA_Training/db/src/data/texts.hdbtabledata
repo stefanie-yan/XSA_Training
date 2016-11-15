@@ -1,0 +1,21 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "XSA_Training.db.data::Util.Texts",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "XSA_Training.db.data::texts.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                   "TEXTID",
+                   "LANGUAGE",
+                   "ISOLANGUAGE",
+                   "TEXT"
+                ]
+            }
+        }
+    ]
+}

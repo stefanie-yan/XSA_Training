@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="XSA_Training.db.Modeling::CV_GETALLNODES" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_GETALLNODES"/>
+<localVariables>
+  <variable id="ip_nodename" parameter="true">
+    <descriptions defaultDescription="ip_nodename"/>
+    <variableProperties datatype="NVARCHAR" length="20" mandatory="false">
+      <valueDomain type="empty"/>
+      <selection multiLine="false"/>
+      <defaultRange/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="XSA_Training.db.functions::TBF_GET_ALL_NODES" type="TABLE_FUNCTION">
+    <resourceUri>XSA_Training.db.functions::TBF_GET_ALL_NODES</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="XSA_Training.db.functions::TBF_GET_ALL_NODES">
+  <attributes>
+    <attribute id="node_name" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="node_name"/>
+      <keyMapping schemaName="VJ2EBHJ8SEKUPDUC_XSA_TRAINING_HDI_CONTAINER" columnObjectName="XSA_Training.db.functions::TBF_GET_ALL_NODES" columnName="node_name"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

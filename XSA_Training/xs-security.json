@@ -1,0 +1,15 @@
+{
+	"xsappname" : "XSA_Training",
+	"scopes" : [
+		{
+			"name" : "$XSAPPNAME.Display",
+			"description" : "display" }
+		],
+	"role-templates" : [
+		{
+			"name" : "Viewer",
+			"description" : "View role",
+			"scope-references" : ["$XSAPPNAME.Display"]
+		}
+	]
+}

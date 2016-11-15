@@ -1,0 +1,29 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "XSA_Training.db::MyModel.Addresses",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "XSA_Training.db.data::addresses.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ADDRESSID",
+			        "CITY",
+			        "POSTALCODE",
+			        "STREET",
+			        "BUILDING",
+			        "COUNTRY",
+			        "REGION",
+			        "ADDRESSTYPE",
+			        "VALIDITY.ENDDATE",
+			        "LATITUDE",
+			        "LONGITUDE",
+			        "POINT"
+                ]
+            }
+        }
+    ]
+}

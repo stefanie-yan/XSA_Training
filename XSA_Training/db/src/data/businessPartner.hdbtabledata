@@ -1,0 +1,31 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "XSA_Training.db::MyModel.BusinessPartner",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "XSA_Training.db.data::businessPartner.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "PARTNERID",
+			        "PARTNERROLE",
+			        "EMAILADDRESS",
+			        "PHONENUMBER",
+			        "FAXNUMBER",
+			        "WEBADDRESS",
+			        "ADDRESSES.ADDRESSID",
+			        "COMPANYNAME",
+			        "LEGALFORM",
+			        "HISTORY.CREATEDBY.EMPLOYEEID",
+			        "HISTORY.CREATEDAT",
+			        "HISTORY.CHANGEDBY.EMPLOYEEID",
+			        "HISTORY.CHANGEDAT",
+			        "CURRENCY"
+                ]
+            }
+        }
+    ]
+}

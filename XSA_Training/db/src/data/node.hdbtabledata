@@ -1,0 +1,20 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "XSA_Training.db::MyModel.node",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "XSA_Training.db.data::node.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "id",
+					"node_name",
+					"subnode_name"
+                ]
+            }
+        }
+    ]
+}

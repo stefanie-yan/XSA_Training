@@ -1,0 +1,8 @@
+{
+  "XSA_Training.db.data::DUMMY": {
+    "target": {
+      "object": "DUMMY",
+      "schema": "SYS"
+    }
+  }
+}

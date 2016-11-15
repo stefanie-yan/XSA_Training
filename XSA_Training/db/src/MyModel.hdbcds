@@ -1,0 +1,183 @@
+namespace XSA_Training.db;
+using XSA_Training.db::EPM;
+
+context MyModel{
+	//table type
+	 Type NameT {
+        FIRST : EPM.SString;
+        MIDDLE : EPM.SString;
+        LAST : EPM.SString;
+        INITIALS : EPM.BusinessKey;
+      };
+	type SexT : String(1);
+	
+	
+	entity MyEntity_columnstore {
+		key id : Integer;
+		a : Integer;
+	};
+	//test the stored type or table type
+	entity MyEntity_rowstore {
+		key id : Integer;
+		a : Integer;
+	}
+	technical configuration {
+		row store;
+	};
+	
+	entity Book {
+		key AuthorID : String(10);
+		key BookTitle : String(100);
+		ISBN : Integer not null;
+		Publisher : String(100);
+	} technical configuration {
+		column store;
+		unique index MYINDEX1 on (ISBN) desc;
+		auto merge;
+	};
+	
+	entity MyCalcField {
+		a : Integer;
+		b : Integer;
+		c : Integer = a + b;
+		s : String(10);
+		t : String(10) = upper(s);
+		x : Decimal(20,10);
+		y : Decimal(20,10);
+		z : Decimal(20,10) = power(ln(x)*sin(y), a);
+	};
+	
+	entity MyPartition {
+		key id : Integer;
+		a : Integer;
+		b : Integer;
+		t : String(100);
+	} technical configuration {
+		partition by hash (id) partitions 2,range (a) (
+		partition 1 <= values < 10,
+		partition values = 10,
+		partition others);
+	};
+	
+	Entity Users {
+     	key PERS_NO: String(10);
+     	FIRSTNAME: EPM.SString;
+     	LASTNAME: EPM.SString;
+     	E_MAIL: EPM.LString;
+     };	
+     
+	Entity Addresses {
+        key  ADDRESSID: EPM.BusinessKey;
+        CITY: EPM.SString;
+        POSTALCODE: EPM.BusinessKey;
+        STREET: EPM.MString;
+        BUILDING: EPM.BusinessKey;
+        COUNTRY: String(3);
+        REGION: String(4);
+        ADDRESSTYPE: String(2);
+        VALIDITY: EPM.ValidityT;   
+        LATITUDE: Double;
+        LONGITUDE: Double; 
+        POINT: hana.ST_POINT;
+    };
+    Type HistT {
+        CREATEDBY : Association to Employees;
+        CREATEDAT : EPM.SDate;
+        CHANGEDBY : Association to Employees;
+        CHANGEDAT : EPM.SDate; 
+    };
+    Entity BusinessPartner {
+        key  PARTNERID: EPM.BusinessKey;
+        PARTNERROLE: String(3); //Business Partner Role
+        EMAILADDRESS: EPM.LString;
+        PHONENUMBER: EPM.PhoneT;
+        FAXNUMBER: EPM.PhoneT null;
+        WEBADDRESS: EPM.VLString;
+        ADDRESSES: Association to Addresses null;
+        COMPANYNAME: String(80);
+        LEGALFORM: EPM.BusinessKey;
+        HISTORY: HistT;
+        CURRENCY: EPM.CurrencyT;
+    };
+    
+    Entity Products {
+        key  PRODUCTID: EPM.BusinessKey; 
+		TYPECODE: String(2);
+		CATEGORY: EPM.SString;
+        HISTORY: HistT;
+        NAMEID: EPM.BusinessKey;
+        DESCID: EPM.BusinessKey;
+        SUPPLIER: Association to BusinessPartner;
+        TAXTARIFFCODE: Integer;
+        QUANTITYUNIT: EPM.UnitT;
+        WEIGHTMEASURE: EPM.QuantityT;
+        WEIGHTUNIT: EPM.UnitT; 
+        CURRENCY: EPM.CurrencyT;
+        PRICE: EPM.AmountT;
+        PRODUCTPICURL: EPM.LString null;
+        WIDTH: EPM.QuantityT;
+        DEPTH: EPM.QuantityT;
+        HEIGHT: EPM.QuantityT;
+        DIMENSIONUNIT: EPM.UnitT;
+
+    };
+	Entity Employees {
+        key  EMPLOYEEID: EPM.BusinessKey;
+        NAME: NameT null;
+        SEX: SexT;
+        LANGUAGE: EPM.ABAPLanguage;
+        PHONENUMBER: EPM.PhoneT null;
+        EMAILADDRESS: EPM.LString;
+        LOGINNAME: String(12);
+        //one to one Association
+        ADDRESSES: Association to Addresses null;
+        VALIDITY: EPM.ValidityT; 
+        CURRENCY: EPM.CurrencyT;                
+        SALARYAMOUNT: EPM.AmountT;
+        ACCOUNTNUMBER: EPM.BusinessKey;
+        BANKID: EPM.BusinessKey;
+        BANKNAME: EPM.LString;
+        EMPLOYEEPICURL: EPM.LString;
+    };
+     Entity Messages {
+        key  MESSAGECLASS: String(20);
+        key  MESSAGENUMBER: String(3);
+        key  LANGUAGE: EPM.ISOLanguageT;
+        DESCRIPTION: EPM.LString null;
+        TEXT: LargeString null;      
+    };
+	
+	 Entity node {
+		key id : Integer;
+		node_name : String(20);
+		subnode_name : String(20);
+	 };
+	 
+	//CDS view
+	view AddressView as select from Addresses
+	{
+	ADDRESSID,
+	CITY,
+	COUNTRY
+	};
+	
+	entity E {
+		a : Integer;
+		b : Integer;
+	};
+	entity F {
+		x : Integer;
+		y : Integer;
+	};
+	view VE as select from E mixin {
+		f : Association[1] to VF on f.vy = $projection.vb;
+	} into {
+		a as va,
+		b as vb,
+		f as vf
+	};
+	view VF as select from F {
+		x as vx,
+		y as vy
+	};
+}

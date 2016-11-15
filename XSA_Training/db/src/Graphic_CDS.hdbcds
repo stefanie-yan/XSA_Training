@@ -1,0 +1,9 @@
+namespace XSA_Training.db;
+
+context Graphic_CDS{
+ 
+entity Entity1{
+ key elem_1 : String(50) not null;
+};
+
+};

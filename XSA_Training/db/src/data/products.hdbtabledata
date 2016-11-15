@@ -1,0 +1,38 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "XSA_Training.db::MyModel.Products",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "XSA_Training.db.data::products.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "PRODUCTID", 
+					"TYPECODE",
+					"CATEGORY",
+			        "HISTORY.CREATEDBY.EMPLOYEEID",
+			        "HISTORY.CREATEDAT",
+			        "HISTORY.CHANGEDBY.EMPLOYEEID",
+			        "HISTORY.CHANGEDAT",
+			        "NAMEID",
+			        "DESCID",
+			        "SUPPLIER.PARTNERID",
+			        "TAXTARIFFCODE",
+			        "QUANTITYUNIT",
+			        "WEIGHTMEASURE",
+			        "WEIGHTUNIT",
+			        "CURRENCY",
+			        "PRICE",
+			        "PRODUCTPICURL",
+			        "WIDTH",
+			        "DEPTH",
+			        "HEIGHT",
+			        "DIMENSIONUNIT"
+                ]
+            }
+        }
+    ]
+}

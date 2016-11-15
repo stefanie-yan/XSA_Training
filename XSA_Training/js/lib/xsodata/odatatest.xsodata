@@ -1,0 +1,3 @@
+service namespace "XSA_Training.services" {
+	 "XSA_Training.db::MyModel.Employees" as "EmployeeSet";
+}

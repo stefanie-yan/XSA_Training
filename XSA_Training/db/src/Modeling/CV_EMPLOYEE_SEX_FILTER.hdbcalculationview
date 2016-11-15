@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="XSA_Training.db.Modeling::CV_EMPLOYEE_SEX_FILTER" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_EMPLOYEE_SEX_FILTER"/>
+<localVariables>
+  <variable id="IP_SEX" parameter="true">
+    <descriptions defaultDescription="IP_SEX"/>
+    <variableProperties datatype="NVARCHAR" length="1" mandatory="false">
+      <valueDomain type="empty"/>
+      <selection/>
+      <defaultRange/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="XSA_Training.db::MyModel.Employees">
+    <resourceUri>XSA_Training.db::MyModel.Employees</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="ACCOUNTNUMBER"><descriptions/>
+        <descriptions defaultDescription="ACCOUNTNUMBER"/>
+      </viewAttribute>
+      <viewAttribute id="ADDRESSES_ADDRESSID"><descriptions/>
+        <descriptions defaultDescription="ADDRESSES_ADDRESSID"/>
+      </viewAttribute>
+      <viewAttribute id="BANKID"><descriptions/>
+        <descriptions defaultDescription="BANKID"/>
+      </viewAttribute>
+      <viewAttribute id="BANKNAME"><descriptions/>
+        <descriptions defaultDescription="BANKNAME"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY"><descriptions/>
+        <descriptions defaultDescription="CURRENCY"/>
+      </viewAttribute>
+      <viewAttribute id="EMAILADDRESS"><descriptions/>
+        <descriptions defaultDescription="EMAILADDRESS"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEEID"><descriptions/>
+        <descriptions defaultDescription="EMPLOYEEID"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEEPICURL"><descriptions/>
+        <descriptions defaultDescription="EMPLOYEEPICURL"/>
+      </viewAttribute>
+      <viewAttribute id="LANGUAGE"><descriptions/>
+        <descriptions defaultDescription="LANGUAGE"/>
+      </viewAttribute>
+      <viewAttribute id="LOGINNAME"><descriptions/>
+        <descriptions defaultDescription="LOGINNAME"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_FIRST"><descriptions/>
+        <descriptions defaultDescription="NAME_FIRST"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_INITIALS"><descriptions/>
+        <descriptions defaultDescription="NAME_INITIALS"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_LAST"><descriptions/>
+        <descriptions defaultDescription="NAME_LAST"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_MIDDLE"><descriptions/>
+        <descriptions defaultDescription="NAME_MIDDLE"/>
+      </viewAttribute>
+      <viewAttribute id="PHONENUMBER"><descriptions/>
+        <descriptions defaultDescription="PHONENUMBER"/>
+      </viewAttribute>
+      <viewAttribute id="SALARYAMOUNT"><descriptions/>
+        <descriptions defaultDescription="SALARYAMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="SEX"><descriptions/>
+        <descriptions defaultDescription="SEX"/>
+      </viewAttribute>
+      <viewAttribute id="VALIDITY_ENDDATE"><descriptions/>
+        <descriptions defaultDescription="VALIDITY_ENDDATE"/>
+      </viewAttribute>
+      <viewAttribute id="VALIDITY_STARTDATE"><descriptions/>
+        <descriptions defaultDescription="VALIDITY_STARTDATE"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="XSA_Training.db::MyModel.Employees">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACCOUNTNUMBER" source="ACCOUNTNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESSES_ADDRESSID" source="ADDRESSES.ADDRESSID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BANKID" source="BANKID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BANKNAME" source="BANKNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY" source="CURRENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAILADDRESS" source="EMAILADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEID" source="EMPLOYEEID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEEPICURL" source="EMPLOYEEPICURL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LANGUAGE" source="LANGUAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOGINNAME" source="LOGINNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME.FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_INITIALS" source="NAME.INITIALS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME.LAST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_MIDDLE" source="NAME.MIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONENUMBER" source="PHONENUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALARYAMOUNT" source="SALARYAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEX" source="SEX"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALIDITY_ENDDATE" source="VALIDITY.ENDDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALIDITY_STARTDATE" source="VALIDITY.STARTDATE"/>
+    </input>
+    <filter>&quot;SEX&quot;='$$IP_SEX$$'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="ACCOUNTNUMBER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ACCOUNTNUMBER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ACCOUNTNUMBER"/>
+    </attribute>
+    <attribute id="ADDRESSES_ADDRESSID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRESSES_ADDRESSID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ADDRESSES_ADDRESSID"/>
+    </attribute>
+    <attribute id="BANKID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BANKID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BANKID"/>
+    </attribute>
+    <attribute id="BANKNAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BANKNAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BANKNAME"/>
+    </attribute>
+    <attribute id="CURRENCY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CURRENCY"/>
+    </attribute>
+    <attribute id="EMAILADDRESS" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAILADDRESS"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMAILADDRESS"/>
+    </attribute>
+    <attribute id="EMPLOYEEID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEEID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMPLOYEEID"/>
+    </attribute>
+    <attribute id="EMPLOYEEPICURL" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEEPICURL"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMPLOYEEPICURL"/>
+    </attribute>
+    <attribute id="LANGUAGE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LANGUAGE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="LANGUAGE"/>
+    </attribute>
+    <attribute id="LOGINNAME" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOGINNAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="LOGINNAME"/>
+    </attribute>
+    <attribute id="NAME_FIRST" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_FIRST"/>
+      <keyMapping columnObjectName="Projection_1" columnName="NAME_FIRST"/>
+    </attribute>
+    <attribute id="NAME_INITIALS" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_INITIALS"/>
+      <keyMapping columnObjectName="Projection_1" columnName="NAME_INITIALS"/>
+    </attribute>
+    <attribute id="NAME_LAST" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_LAST"/>
+      <keyMapping columnObjectName="Projection_1" columnName="NAME_LAST"/>
+    </attribute>
+    <attribute id="NAME_MIDDLE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_MIDDLE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="NAME_MIDDLE"/>
+    </attribute>
+    <attribute id="PHONENUMBER" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PHONENUMBER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PHONENUMBER"/>
+    </attribute>
+    <attribute id="SALARYAMOUNT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALARYAMOUNT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALARYAMOUNT"/>
+    </attribute>
+    <attribute id="SEX" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEX"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SEX"/>
+    </attribute>
+    <attribute id="VALIDITY_ENDDATE" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALIDITY_ENDDATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="VALIDITY_ENDDATE"/>
+    </attribute>
+    <attribute id="VALIDITY_STARTDATE" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALIDITY_STARTDATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="VALIDITY_STARTDATE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="202"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
